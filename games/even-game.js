@@ -1,12 +1,15 @@
-import gameBase from '../src/index.js';
+import gameEngine from '../src/index.js';
+import getRandomNumber from '../src/get-random-number.js';
+import isEven from '../src/is-even.js';
 
 export default () => {
-  const isEven = (num) => num % 2 === 0;
-  const getRandomNumber = () => Math.floor(Math.random() * 100);
-
   const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const question = getRandomNumber();
-  const correctAnswer = isEven(question) ? 'yes' : 'no';
 
-  gameBase(gameDescription, question, correctAnswer);
+  const contentGenerator = () => {
+    const number = getRandomNumber();
+    const correctAnswer = isEven(number) ? 'yes' : 'no';
+    return [number, correctAnswer];
+  };
+
+  gameEngine(gameDescription, contentGenerator);
 };
