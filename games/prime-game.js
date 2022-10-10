@@ -5,7 +5,7 @@ import isEven from '../src/is-even.js';
 export default () => {
   const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-  const contentGenerator = () => {
+  const generateContent = () => {
     const isPrime = (num) => {
     // Исключаем числа до 1, а также все четные числа, кроме 2, которое является простым
     // Чтобы условие isEven(num) отработало корректно, первой должна выполняться проверка num === 2
@@ -25,10 +25,10 @@ export default () => {
       return true;
     };
 
-    const number = getRandomNumber();
-    const correctAnswer = isPrime(number) ? 'yes' : 'no';
-    return [number, correctAnswer];
+    const question = getRandomNumber();
+    const correctAnswer = isPrime(question) ? 'yes' : 'no';
+    return [question, correctAnswer];
   };
 
-  gameEngine(gameDescription, contentGenerator);
+  gameEngine(gameDescription, generateContent);
 };

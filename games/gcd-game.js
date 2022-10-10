@@ -4,11 +4,13 @@ import getRandomNumber from '../src/get-random-number.js';
 export default () => {
   const gameDescription = 'Find the greatest common divisor of given numbers';
 
-  const contentGenerator = () => {
+  const generateContent = () => {
     const firstNumber = getRandomNumber();
     const secondNumber = getRandomNumber();
 
-    const expression = `${firstNumber} ${secondNumber}`;
+    const question = `${firstNumber} ${secondNumber}`;
+    // Функция, выполняющая поиск наибольшего общего делителя
+    // С использованием рекурсивного подхода
     const getGreatestCommonDivisor = (firstNum, secondNum) => {
       if (firstNum === 0) {
         return secondNum;
@@ -18,8 +20,8 @@ export default () => {
     const greatestCommonDivisor = getGreatestCommonDivisor(firstNumber, secondNumber);
     const correctAnswer = greatestCommonDivisor.toString();
 
-    return [expression, correctAnswer];
+    return [question, correctAnswer];
   };
 
-  gameEngine(gameDescription, contentGenerator);
+  gameEngine(gameDescription, generateContent);
 };

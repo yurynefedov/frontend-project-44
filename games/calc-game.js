@@ -5,13 +5,13 @@ import getRandomValueFromArray from '../src/get-random-value-from-array.js';
 export default () => {
   const gameDescription = 'What is the result of the expression?';
 
-  const contentGenerator = () => {
+  const generateContent = () => {
     const firstNumber = getRandomNumber();
     const secondNumber = getRandomNumber();
     const operators = ['+', '-', '*'];
     const operator = getRandomValueFromArray(operators);
 
-    const expression = `${firstNumber} ${operator} ${secondNumber}`;
+    const question = `${firstNumber} ${operator} ${secondNumber}`;
 
     let resultOfExpression;
     if (operator === '+') {
@@ -26,8 +26,8 @@ export default () => {
 
     const correctAnswer = resultOfExpression.toString();
 
-    return [expression, correctAnswer];
+    return [question, correctAnswer];
   };
 
-  gameEngine(gameDescription, contentGenerator);
+  gameEngine(gameDescription, generateContent);
 };

@@ -5,7 +5,7 @@ import getRandomValueFromArray from '../src/get-random-value-from-array.js';
 export default () => {
   const gameDescription = 'What number is missing in the progression?';
 
-  const contentGenerator = () => {
+  const generateContent = () => {
     const generateProgression = () => {
       const progression = [];
       const progressionLength = 10;
@@ -42,5 +42,5 @@ export default () => {
     return [question, correctAnswer];
   };
 
-  gameEngine(gameDescription, contentGenerator);
+  gameEngine(gameDescription, generateContent);
 };

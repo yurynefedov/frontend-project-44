@@ -1,3 +1,13 @@
+### Welcome to the Brain Games!
+Brain Games is a collection of five challenging console games for brain training:
+- brain-even: guess is the number even;
+- brain-calc: calculate the result of the expression;
+- brain-gcd: find the greatest common divisor of two numbers;
+- brain-progression: guess missing element in the progression;
+- brain-prime: guess is the number prime. 
+
+The details of game process are provided in the game demos below.
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/yurynefedov/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/yurynefedov/frontend-project-44/actions)
 

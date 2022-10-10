@@ -5,11 +5,11 @@ import isEven from '../src/is-even.js';
 export default () => {
   const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-  const contentGenerator = () => {
-    const number = getRandomNumber();
-    const correctAnswer = isEven(number) ? 'yes' : 'no';
-    return [number, correctAnswer];
+  const generateContent = () => {
+    const question = getRandomNumber();
+    const correctAnswer = isEven(question) ? 'yes' : 'no';
+    return [question, correctAnswer];
   };
 
-  gameEngine(gameDescription, contentGenerator);
+  gameEngine(gameDescription, generateContent);
 };
