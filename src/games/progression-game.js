@@ -16,18 +16,12 @@ const generateProgression = () => {
   return progression;
 };
 
-const getRandomValueFromArray = (array) => {
-  const randomIndex = getRandomNumber(0, array.length - 1);
-  const randomValueFromArray = array[randomIndex];
-  return randomValueFromArray;
-};
-
 export default () => {
   const gameDescription = 'What number is missing in the progression?';
 
   const generateContent = () => {
     const hideElementInProgression = (progression) => {
-      const hiddenElement = getRandomValueFromArray(progression);
+      const hiddenElement = progression[getRandomNumber(0, progression.length - 1)];
       const newProgression = [];
       for (let i = 0; i < progression.length; i += 1) {
         if (progression[i] === hiddenElement) {

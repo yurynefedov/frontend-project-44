@@ -1,12 +1,6 @@
 import gameEngine from '../index.js';
 import getRandomNumber from '../get-random-number.js';
 
-const getRandomValueFromArray = (array) => {
-  const randomIndex = getRandomNumber(0, array.length - 1);
-  const randomValueFromArray = array[randomIndex];
-  return randomValueFromArray;
-};
-
 const getResultOfExpression = (firstValue, operator, secondValue) => {
   let result;
   switch (operator) {
@@ -32,7 +26,7 @@ export default () => {
     const firstNumber = getRandomNumber(1, 25);
     const secondNumber = getRandomNumber(1, 25);
     const operators = ['+', '-', '*'];
-    const operator = getRandomValueFromArray(operators);
+    const operator = operators[getRandomNumber(0, operators.length - 1)];
 
     const question = `${firstNumber} ${operator} ${secondNumber}`;
 
