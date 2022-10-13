@@ -7,28 +7,36 @@ const getRandomValueFromArray = (array) => {
   return randomValueFromArray;
 };
 
+const getResultOfExpression = (firstValue, operator, secondValue) => {
+  let result;
+  switch (operator) {
+    case '+':
+      result = firstValue + secondValue;
+      break;
+    case '-':
+      result = firstValue - secondValue;
+      break;
+    case '*':
+      result = firstValue * secondValue;
+      break;
+    default:
+      result = null;
+  }
+  return result;
+};
+
 export default () => {
   const gameDescription = 'What is the result of the expression?';
 
   const generateContent = () => {
-    const firstNumber = getRandomNumber();
-    const secondNumber = getRandomNumber();
+    const firstNumber = getRandomNumber(1, 25);
+    const secondNumber = getRandomNumber(1, 25);
     const operators = ['+', '-', '*'];
     const operator = getRandomValueFromArray(operators);
 
     const question = `${firstNumber} ${operator} ${secondNumber}`;
 
-    let resultOfExpression;
-    if (operator === '+') {
-      resultOfExpression = firstNumber + secondNumber;
-    }
-    if (operator === '-') {
-      resultOfExpression = firstNumber - secondNumber;
-    }
-    if (operator === '*') {
-      resultOfExpression = firstNumber * secondNumber;
-    }
-
+    const resultOfExpression = getResultOfExpression(firstNumber, operator, secondNumber);
     const correctAnswer = resultOfExpression.toString();
 
     return [question, correctAnswer];
