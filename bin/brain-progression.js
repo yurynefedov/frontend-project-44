@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import guessMissingElementInProgression from '../games/progression-game.js';
+import playProgressionGame from '../games/progression-game.js';
 
-guessMissingElementInProgression();
+playProgressionGame();
