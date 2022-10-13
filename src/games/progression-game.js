@@ -1,26 +1,31 @@
 import gameEngine from '../index.js';
 import getRandomNumber from '../get-random-number.js';
-import getRandomValueFromArray from '../get-random-value-from-array.js';
+
+const generateProgression = () => {
+  const progression = [];
+  const progressionLength = 10;
+  // Шаг прогрессии должен быть не меньше единицы.
+  // В противном случае, при получении случайного значения равного нулю,
+  // Сформированный массив будет представлять собой коллекцию из десяти одинаковых элементов
+  const progressionStep = getRandomNumber(2, 10);
+  const firstElement = getRandomNumber(1, 10);
+
+  for (let i = 0; i < progressionLength; i += 1) {
+    progression.push(firstElement + progressionStep * i);
+  }
+  return progression;
+};
+
+const getRandomValueFromArray = (array) => {
+  const randomIndex = getRandomNumber(0, array.length - 1);
+  const randomValueFromArray = array[randomIndex];
+  return randomValueFromArray;
+};
 
 export default () => {
   const gameDescription = 'What number is missing in the progression?';
 
   const generateContent = () => {
-    const generateProgression = () => {
-      const progression = [];
-      const progressionLength = 10;
-      // Шаг прогрессии должен быть не меньше единицы.
-      // В противном случае, при получении случайного значения равного нулю,
-      // Сформированный массив будет представлять собой коллекцию из десяти одинаковых элементов
-      const progressionStep = getRandomNumber(10) + 1;
-      const firstElement = getRandomNumber(10);
-
-      for (let i = 0; i < progressionLength; i += 1) {
-        progression.push(firstElement + progressionStep * i);
-      }
-      return progression;
-    };
-
     const hideElementInProgression = (progression) => {
       const hiddenElement = getRandomValueFromArray(progression);
       const newProgression = [];
