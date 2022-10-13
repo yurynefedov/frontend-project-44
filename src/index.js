@@ -22,10 +22,6 @@ export default (gameDescription, generateContent) => {
     }
 
     console.log('Correct!');
-
-    if (i === tryCount) {
-      console.log(`Congratulations, ${userName}!`);
-      return;
-    }
   }
+  console.log(`Congratulations, ${userName}!`);
 };
