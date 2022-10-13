@@ -1,9 +1,10 @@
 import gameEngine from '../index.js';
 import getRandomNumber from '../get-random-number.js';
-import isEven from '../is-even.js';
 
 export default () => {
   const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+  const isEven = (number) => number % 2 === 0;
 
   const generateContent = () => {
     const isPrime = (num) => {
