@@ -1,6 +1,11 @@
 import gameEngine from '../index.js';
 import getRandomNumber from '../get-random-number.js';
-import getRandomValueFromArray from '../get-random-value-from-array.js';
+
+const getRandomValueFromArray = (array) => {
+  const randomIndex = getRandomNumber(0, array.length - 1);
+  const randomValueFromArray = array[randomIndex];
+  return randomValueFromArray;
+};
 
 export default () => {
   const gameDescription = 'What is the result of the expression?';
