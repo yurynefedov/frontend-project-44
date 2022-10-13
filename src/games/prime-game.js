@@ -1,21 +1,12 @@
 import gameEngine from '../index.js';
 import getRandomNumber from '../get-random-number.js';
 
-const isEven = (number) => number % 2 === 0;
-
-const isPrime = (num) => {
-  // Исключаем числа до 1, а также все четные числа, кроме 2, которое является простым
-  // Чтобы условие isEven(num) отработало корректно, первой должна выполняться проверка num === 2
-  // Это позволит нам соркатить количество вычислений
-  // И проверять остаток от деления только на нечетные числа
-  if (num === 2) {
-    return true;
-  }
-  if (num <= 1 || isEven(num)) {
+const isPrime = (number) => {
+  if (number <= 1) {
     return false;
   }
-  for (let i = 3; i < num; i += 2) {
-    if (num % i === 0) {
+  for (let i = 2; i <= Math.sqrt(number); i += 1) {
+    if (number % i === 0) {
       return false;
     }
   }
