@@ -1,6 +1,6 @@
-import gameEngine from '../src/index.js';
-import getRandomNumber from '../src/get-random-number.js';
-import getRandomValueFromArray from '../src/get-random-value-from-array.js';
+import gameEngine from '../index.js';
+import getRandomNumber from '../get-random-number.js';
+import getRandomValueFromArray from '../get-random-value-from-array.js';
 
 export default () => {
   const gameDescription = 'What is the result of the expression?';

@@ -1,6 +1,6 @@
-import gameEngine from '../src/index.js';
-import getRandomNumber from '../src/get-random-number.js';
-import isEven from '../src/is-even.js';
+import gameEngine from '../index.js';
+import getRandomNumber from '../get-random-number.js';
+import isEven from '../is-even.js';
 
 export default () => {
   const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
