@@ -2,22 +2,23 @@ import gameEngine from '../index.js';
 import getRandomNumber from '../get-random-number.js';
 
 const getResultOfExpression = (firstValue, operator, secondValue) => {
-  let result;
   switch (operator) {
     case '+':
-      result = firstValue + secondValue;
-      break;
+
+      return firstValue + secondValue;
     case '-':
-      result = firstValue - secondValue;
-      break;
+
+      return firstValue - secondValue;
     case '*':
-      result = firstValue * secondValue;
-      break;
+
+      return firstValue * secondValue;
     default:
-      result = null;
+
+      throw new Error(`Unknown order state: '${operator}'!`);
   }
-  return result;
 };
+
+const operators = ['+', '-', '*'];
 
 export default () => {
   const gameDescription = 'What is the result of the expression?';
@@ -25,7 +26,6 @@ export default () => {
   const generateContent = () => {
     const firstNumber = getRandomNumber(1, 25);
     const secondNumber = getRandomNumber(1, 25);
-    const operators = ['+', '-', '*'];
     const operator = operators[getRandomNumber(0, operators.length - 1)];
 
     const question = `${firstNumber} ${operator} ${secondNumber}`;
