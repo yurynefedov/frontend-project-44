@@ -13,13 +13,14 @@ const generateProgression = () => {
   for (let i = 0; i < progressionLength; i += 1) {
     progression.push(firstElement + progressionStep * i);
   }
+
   return progression;
 };
 
 export default () => {
   const gameDescription = 'What number is missing in the progression?';
 
-  const generateContent = () => {
+  const generateRoundsData = () => {
     const hideElementInProgression = (progression) => {
       const hiddenElement = progression[getRandomNumber(0, progression.length - 1)];
       const newProgression = [];
@@ -41,5 +42,5 @@ export default () => {
     return [question, correctAnswer];
   };
 
-  gameEngine(gameDescription, generateContent);
+  gameEngine(gameDescription, generateRoundsData);
 };

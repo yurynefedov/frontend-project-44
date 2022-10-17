@@ -6,23 +6,24 @@ import getRandomNumber from '../get-random-number.js';
 const getGreatestCommonDivisor = (firstNum, secondNum) => {
   if (firstNum === 0) {
     return secondNum;
-  } return getGreatestCommonDivisor(secondNum % firstNum, firstNum);
+  }
+
+  return getGreatestCommonDivisor(secondNum % firstNum, firstNum);
 };
 
 export default () => {
   const gameDescription = 'Find the greatest common divisor of given numbers';
 
-  const generateContent = () => {
+  const generateRoundsData = () => {
     const firstNumber = getRandomNumber();
     const secondNumber = getRandomNumber();
 
     const question = `${firstNumber} ${secondNumber}`;
-
     const greatestCommonDivisor = getGreatestCommonDivisor(firstNumber, secondNumber);
     const correctAnswer = greatestCommonDivisor.toString();
 
     return [question, correctAnswer];
   };
 
-  gameEngine(gameDescription, generateContent);
+  gameEngine(gameDescription, generateRoundsData);
 };

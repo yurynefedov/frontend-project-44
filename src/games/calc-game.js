@@ -23,18 +23,17 @@ const operators = ['+', '-', '*'];
 export default () => {
   const gameDescription = 'What is the result of the expression?';
 
-  const generateContent = () => {
+  const generateRoundsData = () => {
     const firstNumber = getRandomNumber(1, 25);
     const secondNumber = getRandomNumber(1, 25);
     const operator = operators[getRandomNumber(0, operators.length - 1)];
 
     const question = `${firstNumber} ${operator} ${secondNumber}`;
-
     const resultOfExpression = getResultOfExpression(firstNumber, operator, secondNumber);
     const correctAnswer = resultOfExpression.toString();
 
     return [question, correctAnswer];
   };
 
-  gameEngine(gameDescription, generateContent);
+  gameEngine(gameDescription, generateRoundsData);
 };

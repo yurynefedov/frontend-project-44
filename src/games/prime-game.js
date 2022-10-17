@@ -10,17 +10,19 @@ const isPrime = (number) => {
       return false;
     }
   }
+
   return true;
 };
 
 export default () => {
   const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-  const generateContent = () => {
+  const generateRoundsData = () => {
     const question = getRandomNumber();
     const correctAnswer = isPrime(question) ? 'yes' : 'no';
+
     return [question, correctAnswer];
   };
 
-  gameEngine(gameDescription, generateContent);
+  gameEngine(gameDescription, generateRoundsData);
 };
