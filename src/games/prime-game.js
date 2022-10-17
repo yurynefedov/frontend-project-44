@@ -14,15 +14,15 @@ const isPrime = (number) => {
   return true;
 };
 
+const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+const generateRoundsData = () => {
+  const question = getRandomNumber();
+  const correctAnswer = isPrime(question) ? 'yes' : 'no';
+
+  return [question, correctAnswer];
+};
+
 export default () => {
-  const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
-  const generateRoundsData = () => {
-    const question = getRandomNumber();
-    const correctAnswer = isPrime(question) ? 'yes' : 'no';
-
-    return [question, correctAnswer];
-  };
-
   gameEngine(gameDescription, generateRoundsData);
 };
