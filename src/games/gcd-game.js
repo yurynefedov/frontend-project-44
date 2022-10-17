@@ -11,19 +11,19 @@ const getGreatestCommonDivisor = (firstNum, secondNum) => {
   return getGreatestCommonDivisor(secondNum % firstNum, firstNum);
 };
 
+const gameDescription = 'Find the greatest common divisor of given numbers';
+
+const generateRoundsData = () => {
+  const firstNumber = getRandomNumber();
+  const secondNumber = getRandomNumber();
+
+  const question = `${firstNumber} ${secondNumber}`;
+  const greatestCommonDivisor = getGreatestCommonDivisor(firstNumber, secondNumber);
+  const correctAnswer = greatestCommonDivisor.toString();
+
+  return [question, correctAnswer];
+};
+
 export default () => {
-  const gameDescription = 'Find the greatest common divisor of given numbers';
-
-  const generateRoundsData = () => {
-    const firstNumber = getRandomNumber();
-    const secondNumber = getRandomNumber();
-
-    const question = `${firstNumber} ${secondNumber}`;
-    const greatestCommonDivisor = getGreatestCommonDivisor(firstNumber, secondNumber);
-    const correctAnswer = greatestCommonDivisor.toString();
-
-    return [question, correctAnswer];
-  };
-
   gameEngine(gameDescription, generateRoundsData);
 };
