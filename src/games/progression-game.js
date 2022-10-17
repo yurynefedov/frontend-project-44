@@ -1,15 +1,8 @@
 import gameEngine from '../index.js';
 import getRandomNumber from '../get-random-number.js';
 
-const generateProgression = () => {
+const generateProgression = (progressionLength, firstElement, progressionStep) => {
   const progression = [];
-  const progressionLength = 10;
-  // Шаг прогрессии должен быть не меньше единицы.
-  // В противном случае, при получении случайного значения равного нулю,
-  // Сформированный массив будет представлять собой коллекцию из десяти одинаковых элементов
-  const progressionStep = getRandomNumber(2, 10);
-  const firstElement = getRandomNumber(1, 10);
-
   for (let i = 0; i < progressionLength; i += 1) {
     progression.push(firstElement + progressionStep * i);
   }
@@ -21,23 +14,25 @@ export default () => {
   const gameDescription = 'What number is missing in the progression?';
 
   const generateRoundsData = () => {
-    const hideElementInProgression = (progression) => {
-      const hiddenElement = progression[getRandomNumber(0, progression.length - 1)];
-      const newProgression = [];
-      for (let i = 0; i < progression.length; i += 1) {
-        if (progression[i] === hiddenElement) {
-          newProgression.push('..');
-        } else newProgression.push(progression[i]);
-      }
-      const hiddenElementToString = hiddenElement.toString();
-      const newProgressionToString = newProgression.join(' ');
+    const progressionLength = 10;
+    const firstElement = getRandomNumber(1, 10);
+    // Шаг прогрессии должен быть не меньше единицы.
+    // В противном случае, при получении случайного значения равного нулю,
+    // Сформированный массив будет представлять собой коллекцию из десяти одинаковых элементов
+    const progressionStep = getRandomNumber(2, 10);
 
-      return [newProgressionToString, hiddenElementToString];
-    };
+    const progression = generateProgression(progressionLength, firstElement, progressionStep);
 
-    const generatedProgression = generateProgression();
-    const progressionWithHiddenElement = hideElementInProgression(generatedProgression);
-    const [question, correctAnswer] = progressionWithHiddenElement;
+    // Первый по счету элемент скрываться не должен
+    // Это необходимо для корректной работы алгоритма определения значения скрытого элемента,
+    // Поскольку она осуществляется с использованием значения предыдущего элемента
+    progression[getRandomNumber(1, progression.length - 1)] = '..';
+
+    const indexOfHiddenElement = progression.indexOf('..');
+    const valueOfHiddenElement = progression[indexOfHiddenElement - 1] + progressionStep;
+
+    const question = progression.join(' ');
+    const correctAnswer = valueOfHiddenElement.toString();
 
     return [question, correctAnswer];
   };
