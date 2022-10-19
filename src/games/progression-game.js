@@ -22,16 +22,13 @@ const generateRoundsData = () => {
 
   const progression = generateProgression(progressionLength, firstElement, progressionStep);
 
-  // Первый по счету элемент скрываться не должен
-  // Это необходимо для корректной работы алгоритма определения значения скрытого элемента,
-  // Поскольку она осуществляется с использованием значения предыдущего элемента
-  progression[getRandomNumber(1, progression.length - 1)] = '..';
-
-  const indexOfHiddenElement = progression.indexOf('..');
-  const valueOfHiddenElement = progression[indexOfHiddenElement - 1] + progressionStep;
+  // Скроем один из элементов массива с помощью обращения по случайно сгенерированному индексу
+  const randomIndex = getRandomNumber(0, progression.length - 1);
+  const hiddenElement = progression[randomIndex];
+  progression[randomIndex] = '..';
 
   const question = progression.join(' ');
-  const correctAnswer = valueOfHiddenElement.toString();
+  const correctAnswer = hiddenElement.toString();
 
   return [question, correctAnswer];
 };
